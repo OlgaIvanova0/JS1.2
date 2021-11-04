@@ -2,16 +2,16 @@
 
 /* 1 задание
 let a = 1, b = 1, c, d;
-c = ++a; //с=а+1=2 теперь а=1+1=2
-alert(c); //2
+c = ++a; //Результат расчетов: с=а+1=2, где у а - первоначальное значение =1. Но теперь а=1+1=2
+alert(c); // Выводит с=2
 
-d = b++; // d=b=1 теперь b=1+1=2
+d = b++; // Результат расчетов: d=b=1, где у b - первоначальное значение = 1, но теперь b=1+1=2
 alert(d); // 1
 
-c = 2 + ++a; //с=2+2+1=5 теперь а=3
+c = 2 + ++a; //Результат расчетов: с=2+2+1=5, где у а - значение 2 и а++ = 3 и теперь это новое значение а=3
 alert(c); // 5
 
-d = 2 + b++; //d=2+2=4 и b=3
+d = 2 + b++; //Результат расчетов: d=2+2=4, где b=2, а b++=3 и теперь новое значение b=3
 alert(d); // 4
 alert(a); // 3
 alert(b); // 3
@@ -19,12 +19,12 @@ alert(b); // 3
 
 /*задание 2
 let a = 2;
-let x = 1 + (a *= 2); //х=1+(2*2)=5
+let x = 1 + (a *= 2); //Результат расчетов: х=1+(2*2)=5, т.к. а*=2 - это 2*2=4
 */
 
 /*задание 3
-let a = prompt('Введите целое число');
-let b = prompt('Введите еще одно целое число');
+let a = Math.round(+ prompt('Введите целое число'));
+let b = Math.round(+ prompt('Введите еще одно целое число'));
 
 if (a >= 0, b >= 0){
     alert(a - b);
@@ -39,60 +39,50 @@ if (a >= 0, b >= 0){
 let a = + prompt('Введите целое число');
 let b = + prompt('Введите еще одно целое число');
 
-add(a, b);
+addition(a, b);
 
-function add(a, b) {
-    const sum = a + b;
-    return sum;
+function addition(a, b) {
+    return a + b; 
 }
-const mySum = add(a,b);
-console.log('Сумма ваших чисел равна ' + mySum);
+console.log('Сумма ваших чисел равна ' + addition(a, b));
 
 reduce(a, b);
 
 function reduce(a, b) {
-    const red = a - b;
-    return red;
+    return a - b;
 }
-const myRed = reduce(a,b);
-console.log('Разность ваших чисел равна ' + myRed);
+console.log('Разность ваших чисел равна ' + reduce(a, b));
 
 multiply(a, b);
 
 function multiply(a, b) {
-    const mult = a * b;
-    return mult;
+    return a * b;
 }
-const myMult = multiply(a,b);
-console.log('Произведение ваших чисел равна ' + myMult);
+console.log('Произведение ваших чисел равно ' + multiply(a, b));
 
 divide(a, b);
 
 function divide(a, b) {
-    const div = a / b;
-    return div;
+    return a / b;
 }
-const myDiv = divide(a,b);
-console.log('Частное ваших чисел равна ' + myDiv);
+console.log('Частное ваших чисел равно ' + divide(a, b));
 
 
 //задание 5
 let arg1 = a;
 let arg2 = b;
 const operation = 'divide';
-mathOperation(arg1, arg2, operation);
-
 
 function mathOperation(arg1, arg2, operation){
     switch (arg1, arg2, operation){
         case "add": 
-        return mySum;
+        return addition(a, b);
         case "reduce":
-        return myRed;
+        return reduce(a, b);
         case "multiply":
-        return myMult;
+        return multiply(a, b);
         case "divide":
-        return myDiv;
+        return divide(a, b);
         default:
         return false;
         }
@@ -101,70 +91,37 @@ console.log(mathOperation(arg1, arg2, operation));
 
 //задание 6*
 let money = + prompt('Сколько денег вы хотите положить в банк?');
-readMoney(money);
 
 function readMoney(money){
     if (money < 10) {
-        let number = money; 
-        console.log(number);
-        console.log ('меньше десятка');
-    } else if (money < 100 ) {
-        let hundred = money;
-        let number = hundred % 10;
-        console.log(hundred);
-        console.log ('меньше сотни');
-        console.log ('последняя цифра ' + number);
+        return money; 
+    } else if (money < 100) {
+        return money % 10;
     } else if (money < 1000) {
-        let thousand = money;
-        let number = (thousand % 100) % 10;
-        console.log(thousand);
-        console.log ('меньше тысячи');
-        console.log ('последняя цифра ' + number);
+        return (money % 100) % 10;
     } else if (money < 10000) {
-        let tth = money;
-        let number = (tth % 1000) % 10;
-        console.log(tth);
-        console.log ('меньше десяти тысяч');
-        console.log ('последняя цифра ' + number);
+        return (money % 1000) % 10;
     } else if (money < 100000) {
-        let ht = money;
-        let number = (ht % 10000) % 10;
-        console.log(ht);
-        console.log ('меньше ста тысяч');
-        console.log ('последняя цифра ' + number);
+        return (money % 10000) % 10;
     } else if (money < 1000000) {
-        let ml = money;
-        let number = (ml % 100000) % 10;
-        console.log(ml);
-        console.log ('меньше миллиона');
-        console.log ('последняя цифра ' + number);
+        return (money % 100000) % 10;
     } else {
         alert ('Введите число меньше миллиона');
     }
 }
-readNumber();
+console.log(readMoney());
 
-function readNumber (number) {
-    if (number === 0) {
-        let word = ' рублей';
-        console.log(word);
-        return word;
-    } else if (number === 1) {
-        let word = ' рубль';
-        console.log(word);
-        return word;
-    } else if (number > 1, number <= 4) {
-        let word = ' рубля';
-        console.log(word);
-        return word;
+function readNumber () {
+    if (readMoney(money) === 0) {
+        return ' рублей';
+    } else if (readMoney(money) === 1) {
+        return ' рубль';
+    } else if (readMoney(money) === 2, readMoney(money) === 3, readMoney(money) === 4) {
+        return ' рубля';
     } else {
-        let word = ' рублей';
-        console.log(word);
-        return word;
+        return ' рублей';
     }
 }
-
-message();
 
 function message(){
     if (money === 101) {

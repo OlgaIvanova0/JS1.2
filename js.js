@@ -55,10 +55,10 @@ console.log(`Частное ваших чисел равно ${divide(a, b)}`);
 //задание 5
 let arg1 = a;
 let arg2 = b;
-const operation = 'divide';
+const operation = "multiply";
 
 function mathOperation(arg1, arg2, operation){
-    switch (arg1, arg2, operation){
+    switch (operation){
         case "add": 
         return addition(a, b);
         case "reduce":
@@ -75,28 +75,26 @@ console.log(mathOperation(arg1, arg2, operation));
 
 //задание 6*
 let money = + prompt('Сколько денег вы хотите положить в банк? Введите число цифрами.');
-  
-if(Number.isNaN(money)) {
-        alert('Сумма введена неправильно, попробуйте заново.');
-}
 
 const readMoney = money => {
-    if (money < 10) {
+    switch (true) {
+        case Number.isNaN(money):
+        break;
+        case money < 10:
         return money; 
-    } else if (money < 100) {
+        case money < 100:
         return money % 10;
-    } else if (money < 1000) {
+        case money < 1000:
         return (money % 100) % 10;
-    } else if(money < 10000) {
+        case money < 10000:
         return (money % 1000) % 10;
-    } else if (money < 100000) {
+        case money < 100000:
         return (money % 10000) % 10;
-    } else if (money < 1000000) {
+        case money < 1000000:
         return (money % 100000) % 10;
-    } else {
-        alert('Введите цифрами число меньше миллиона');
-        return;
-    }
+        default:
+           break; 
+        }
 };
 
 const readNumber = readMoney => {
@@ -106,20 +104,26 @@ const readNumber = readMoney => {
         return ' рубль';
     } else if (readMoney(money) === 2 || readMoney(money) === 3 || readMoney(money) === 4) {
         return ' рубля';
-    } else {
+    }  else {
         return ' рублей';
     }
 };
 
-if (money === 101) {
-    alert('Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'); 
-} else if (money === 10020){
-    alert('Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'); 
-} else if (money === 120104){
-    alert('Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'); 
-} else {
-    alert('Вы положили в банк ' + money + readNumber(readMoney));   
-}
+const endFunc = money =>{
+    if (Number.isNaN(money)) {
+        return 'Сумма введена неправильно, попробуйте заново.'; 
+    } else if (money === 101) {
+        return 'Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'; 
+    } else if (money === 10020){
+        return 'Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'; 
+    } else if (money === 120104){
+        return 'Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'; 
+    } else {
+        return 'Вы положили в банк ' + money + readNumber(readMoney);   
+    }
+};
+alert(endFunc(money));
+
 
 
 

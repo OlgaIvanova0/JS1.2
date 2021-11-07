@@ -74,55 +74,25 @@ function mathOperation(arg1, arg2, operation){
 console.log(mathOperation(arg1, arg2, operation));
 
 //задание 6*
-let money = + prompt('Сколько денег вы хотите положить в банк? Введите число цифрами.');
+let money = prompt(`Сколько денег вы хотите положить в банк? Введите число цифрами.`);
 
-const readMoney = money => {
-    switch (true) {
-        case Number.isNaN(money):
-        break;
-        case money < 10:
-        return money; 
-        case money < 100:
-        return money % 10;
-        case money < 1000:
-        return (money % 100) % 10;
-        case money < 10000:
-        return (money % 1000) % 10;
-        case money < 100000:
-        return (money % 10000) % 10;
-        case money < 1000000:
-        return (money % 100000) % 10;
-        default:
-           break; 
-        }
-};
-
-const readNumber = readMoney => {
-    if (readMoney(money) === 0) {
-        return ' рублей';
-    } else if (readMoney(money) === 1) {
-        return ' рубль';
-    } else if (readMoney(money) === 2 || readMoney(money) === 3 || readMoney(money) === 4) {
-        return ' рубля';
+const readNumber = money => {
+    if (money === `1`){
+        return ` рубль`;
+    } else if (money === `2` || money === `3` || money === `4`) {
+        return ` рубля`;
     }  else {
-        return ' рублей';
+        return ` рублей`;
     }
 };
 
 const endFunc = money =>{
-    if (Number.isNaN(money)) {
-        return 'Сумма введена неправильно, попробуйте заново.'; 
-    } else if (money === 101) {
-        return 'Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'; 
-    } else if (money === 10020){
-        return 'Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'; 
-    } else if (money === 120104){
-        return 'Ваша сумма в ' + money + readNumber(readMoney) + ' успешно зачислена.'; 
-    } else {
-        return 'Вы положили в банк ' + money + readNumber(readMoney);   
-    }
+    if (Number.isNaN(+ money)) {
+        return alert(`Сумма введена неправильно, попробуйте заново.`); 
+    } 
+    return alert(`Вы положили в банк ` + money + readNumber(money[money.length - 1]));   
 };
-alert(endFunc(money));
+endFunc(money);
 
 
 
